@@ -469,7 +469,8 @@ class DTSApi(AdditionalAPIPrototype):
             },
             "level": references.level,
             "passage": url_for(".dts_document", id=objectId, _external=self._external)+"{&ref}{&start}{&end}",
-            "@id": url_for(".dts_navigation", **params),
+            "@id": objectId,
+            "dts:references": url_for(".dts_navigation", **params),
             "hydra:member": [_ref_to_dict(ref) for ref in references]
         }
         if references.citation:
